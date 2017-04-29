@@ -1,0 +1,271 @@
+body, html {
+	min-width: 100%;
+	min-height: 100%;
+	font-size: @base-font;
+	overflow-x: hidden;
+}
+
+a {
+	text-decoration: none;
+
+	&:active,
+	&:focus {
+		color: inherit;
+	}
+}
+
+/*====mixins====*/
+
+.flex() {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.flex-c() {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+}
+
+/*====header====*/
+
+.header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	padding: 30px 0;
+	background: rgba(0,0,0,.5);
+	z-index: 20;
+
+	.container {
+		.flex();
+	}
+
+	&__logo {
+		width: 215px;
+		height: 45px;
+		.flex-c();
+
+		img {
+			max-width: 100%;
+			max-height: 100%;
+		}
+	}
+}
+
+.nav {
+	&__link {
+		text-transform: uppercase;
+		margin: 0 15px;
+		color: @c-white;
+		transition: all .3s;
+
+		&:hover {
+			color: @c-blue;
+			text-shadow: 0 0 10px  @c-blue;
+		}
+	}
+}
+
+/*====banner====*/
+
+.icons {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	.flex-c();
+	display: inline-flex;
+    background: -webkit-linear-gradient(14deg, rgb(15, 124, 225), rgb(162, 239, 155));
+    background: linear-gradient(14deg, rgb(15, 124, 225), rgb(162, 239, 155));
+	transition: all.3s;
+
+	&_md {
+		width: 65px;
+		height: 65px;	
+	}
+}
+
+.banner {
+	min-height: 115vh;
+	.flex-c();
+	text-align: center;
+	background: url('../img/top-bg.jpg') 50% no-repeat;
+	background-size: cover;
+	color: @c-white;
+
+	&__contact {
+		.flex();
+		margin-top: 10%;
+	}
+
+	&__tel {
+		text-align: right;
+		color: @c-white;
+		.flex();
+
+		.icons {
+			margin-left: 10px;
+		}
+
+		&:hover {
+			.icons {
+				box-shadow: 0 0 20px  @c-blue;
+			}
+		}
+	}
+
+	&__title {
+		text-transform: uppercase;
+		font-weight: bold;
+		margin-bottom: 20px;
+	}
+	&__inner {
+		width: 40%;
+	}
+}
+
+
+
+/*====why-we====*/
+
+.why-we {
+	.flex-c();
+	align-items: flex-start;
+
+	&__image {
+		width: 33%;
+		height: 700px;
+		position: relative;
+
+		img {
+			position: absolute;
+			max-width: 100%;
+			height: 135%;
+			bottom: -70px;
+			z-index: 2;
+		}
+	}
+
+	&__txt {
+		width: 37%;
+		margin-left: 5%;
+
+		.subtitle {
+			margin: 0 auto 80px;
+			width: 70%;
+		}
+	}
+}
+
+.section {
+	position: relative;
+	padding: 70px 0;
+	&:before {
+		content: '';
+		display: inline-block;
+		position: absolute;
+		top: -35px;
+		height: 90px;
+		width: 110%;
+		background:@c-white;
+		transform: rotate(2deg);
+	}
+	&:after {
+		content: '';
+		display: inline-block;
+		position: absolute;
+		bottom: -35px;
+		height: 90px;
+		width: 110%;
+		background: @c-white;
+		transform: rotate(2deg);
+	}
+}
+
+.title {
+	text-transform: uppercase;
+	font-weight: bold;
+	background:-webkit-linear-gradient(14deg, rgb(15, 124, 225) 5%, rgb(162, 239, 155) 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: @c-blue;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.subtitle {
+	font-weight: bold;
+	text-align: center;
+}
+
+.plus {
+	list-style: none;
+	.flex();
+	flex-wrap: wrap;
+	margin: 40px 0 100px;
+
+	&__item {
+		width: 46%;
+		.flex();
+		flex-wrap: no-wrap;
+		justify-content: flex-start;
+		margin: 25px 0;
+	}
+
+	&__txt {
+		margin-left: 10%;
+		width: 65%;
+	}
+
+	&__title {
+		font-weight: bold;
+		color: @c-blue;
+	}
+}
+
+.order {
+	.flex-c();
+	font-weight: bold;
+	text-align: right;
+
+	.btn {
+		margin-left: 50px;
+	}
+}
+
+
+
+/*====counter====*/
+
+.counter {
+	min-height: 440px;
+	background: url('../img/giro-count.png') 50% no-repeat;
+	background-size: cover;
+	.flex-c();
+	text-align: right;
+
+	&-list {
+		list-style: none;
+		width: 100%;
+		.flex-c();
+
+		&__item {
+			margin: 5%;
+		}		
+	}
+
+	&__number {
+		color: @c-blue;
+		font-weight: bold;
+	}
+
+	&__title {
+		color: @c-white;
+		text-transform: uppercase;
+		font-weight: bold;
+	}
+}

@@ -1,0 +1,120 @@
+/*
+Icon classes can be used entirely standalone. They are named after their original file names.
+
+Example usage in HTML:
+
+`display: block` sprite:
+<div class="icon-home"></div>
+
+To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+
+// CSS
+.icon {
+  display: inline-block;
+}
+
+// HTML
+<i class="icon icon-home"></i>
+*/
+.icon-arr-l {
+  background-image: url(../img/sprite.png);
+  background-position: 0px -209px;
+  width: 36px;
+  height: 20px;
+}
+.icon-arr-r {
+  background-image: url(../img/sprite.png);
+  background-position: -86px -209px;
+  width: 36px;
+  height: 20px;
+}
+.icon-basket {
+  background-image: url(../img/sprite.png);
+  background-position: -285px -279px;
+  width: 18px;
+  height: 14px;
+}
+.icon-calender {
+  background-image: url(../img/sprite.png);
+  background-position: 0px -279px;
+  width: 23px;
+  height: 24px;
+}
+.icon-coma-l {
+  background-image: url(../img/sprite.png);
+  background-position: -87px -124px;
+  width: 36px;
+  height: 35px;
+}
+.icon-coma-r {
+  background-image: url(../img/sprite.png);
+  background-position: 0px -124px;
+  width: 37px;
+  height: 35px;
+}
+.icon-delivery {
+  background-image: url(../img/sprite.png);
+  background-position: -228px -79px;
+  width: 29px;
+  height: 24px;
+}
+.icon-kg {
+  background-image: url(../img/sprite.png);
+  background-position: -308px 0px;
+  width: 20px;
+  height: 29px;
+}
+.icon-led {
+  background-image: url(../img/sprite.png);
+  background-position: -308px -79px;
+  width: 18px;
+  height: 30px;
+}
+.icon-maxkg {
+  background-image: url(../img/sprite.png);
+  background-position: -228px 0px;
+  width: 30px;
+  height: 29px;
+}
+.icon-phone {
+  background-image: url(../img/sprite.png);
+  background-position: -308px -159px;
+  width: 17px;
+  height: 17px;
+}
+.icon-power {
+  background-image: url(../img/sprite.png);
+  background-position: -172px -209px;
+  width: 30px;
+  height: 16px;
+}
+.icon-send {
+  background-image: url(../img/sprite.png);
+  background-position: -219px -279px;
+  width: 16px;
+  height: 16px;
+}
+.icon-services-center {
+  background-image: url(../img/sprite.png);
+  background-position: -73px -279px;
+  width: 23px;
+  height: 23px;
+}
+.icon-services {
+  background-image: url(../img/sprite.png);
+  background-position: -146px -279px;
+  width: 23px;
+  height: 23px;
+}
+.icon-speed {
+  background-image: url(../img/sprite.png);
+  background-position: 0px 0px;
+  width: 72px;
+  height: 74px;
+}
+.icon-track {
+  background-image: url(../img/sprite.png);
+  background-position: -122px 0px;
+  width: 56px;
+  height: 54px;
+}
