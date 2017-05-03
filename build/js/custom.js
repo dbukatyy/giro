@@ -2,20 +2,68 @@
 
 jQuery(document).ready(function () {
 
-	// $('.product__img').slick({
-	// 	slidesToShow: 1,
-	// 	slidesToScroll: 1,
-	// 	arrows: false,
-	// 	fade: true,
-	// 	lazyLoad: 'ondemand',
-	// 	asNavFor: '.product-model__list'
-	// });
+	var msgText = $('.form__txt').html(),
+	    time = 1;
+	var flag = true;
+
+	AOS.init({
+		disable: window.innerWidth < 600
+	});
+
+	$(window).on('scroll', function (e) {
+		var currentScroll = $(e.target).scrollTop() + window.innerHeight / 2,
+		    scrollVal = $(e.target).scrollTop(),
+		    counterOffset = $('.counter').offset().top;
+
+		if ($(e.target).scrollTop() > 200) {
+			$('.header').addClass('active');
+		} else {
+			$('.header').removeClass('active');
+		}
+
+		if (flag && currentScroll > counterOffset) {
+
+			$('.counter-list').each(function () {
+				$('.counter__number').each(function () {
+					var i = 1,
+					    num = $(this).data('num'),
+					    step = 1000 * time / num,
+					    that = $(this),
+					    int = setInterval(function () {
+						if (i <= num) {
+							that.html(i);
+						} else {
+							clearInterval(int);
+						}
+						i++;
+					}, step);
+				});
+			});
+
+			flag = false;
+		}
+
+		$('.banner').css('background-position', '50% ' + -scrollVal / 2 + 'px');
+	});
+
+	$('.nav__link').on('click', function (e) {
+		e.preventDefault();
+
+		var sectionId = $(e.target).attr('href'),
+		    sectionOffset = $('' + sectionId).offset().top;
+
+		$('html, body').animate({
+			scrollTop: sectionOffset
+		}, 1000);
+	});
+
 	$('.review').slick({
 		slidesToShow: 1,
 		slidesToScroll: 1,
 		dots: true
 		// centerMode: true,
 	});
+
 	$('.product-model__item img').on('click', function (e) {
 		var imgSrc = $(e.target).data('src'),
 		    targetImg = $(e.target).closest('.product').find('.product__img-item img[src="' + imgSrc + '"]'),
@@ -49,5 +97,93 @@ jQuery(document).ready(function () {
 		document.querySelector('.preview').addEventListener('ended', function (e) {
 			$('.video__over').removeClass('active');
 		});
+	});
+
+	$('.btn').on('click', function (e) {
+		$('.form__wrapp').addClass('active');
+
+		setTimeout(function () {
+			return $('.form').addClass('active');
+		}, 200);
+	});
+
+	$('.form__close').on('click', function (e) {
+		$('.form').removeClass('active');
+
+		setTimeout(function () {
+			return $('.form__wrapp').removeClass('active');
+		}, 200);
+
+		$('.form__txt').html(msgText).css('color', 'rgba(15,124,255,1)');
+
+		$('.form')[0].reset();
+	});
+
+	$('.form__btn').on('click', function (e) {
+
+		e.preventDefault();
+
+		var msg = $('.form__txt'),
+
+		// msgText =  msg.html(),
+		form = $(this).closest('.form'),
+		    inputs = form.find('.form__field'),
+
+		// errorMsg = form.find('.error'),
+		valid = validate();
+
+		function validate() {
+
+			var valid = true;
+
+			inputs.each(function () {
+
+				if ($(this).val() === '') {
+					valid = false;
+					return false;
+				}
+			});
+
+			return valid;
+		}
+
+		function showMessage(data) {
+			msg.html(data);
+			// msg.addClass('msg_active');
+		}
+
+		if (valid) {
+
+			$.ajax({
+				url: form.attr('action'),
+				data: form.serialize(),
+				type: 'POST',
+				success: function success(data) {
+					showMessage(data);
+					msg.css('color', 'rgba(39,179,101,.8)');
+					form[0].reset();
+				},
+				error: function error() {
+					showMessage('Ошибка отправки. Пожалуйста, повторите попытку.');
+					msg.css('color', 'rgba(158,26,47,.8)');
+					setTimeout(function () {
+						showMessage(msgText);
+						msg.css('color', 'rgba(15,124,255,1)');
+					}, 3000);
+				}
+				// complete: function(){
+				//     setTimeout(function () {
+				//         showMessage(msgText);
+				//         msg.css('color', 'rgba(15,124,255,1)');
+				//     }, 3000);
+				// }
+			});
+		} else {
+			showMessage('Пожалуйста, заполните все поля.');
+			msg.css('color', 'rgba(158,26,47,.8)');
+			// setTimeout( function () {
+			//     msg.removeClass('msg_active');
+			// }, 5000);
+		}
 	});
 });

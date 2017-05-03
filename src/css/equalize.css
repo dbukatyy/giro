@@ -1,6 +1,6 @@
 @media only screen and (min-width: 576px) {
   .container {
-    width: calc(576px - 6.25%); } }
+    width: 98%; } }
 
 .container,
 .container-fluid {
@@ -266,7 +266,7 @@
 
 @media only screen and (min-width: 768px) {
   .container {
-    width: calc(768px - 6.25%); }
+    width: 96%; }
   .col-sm,
   .col-sm-1,
   .col-sm-2,
@@ -432,7 +432,7 @@
 
 @media only screen and (min-width: 992px) {
   .container {
-    width: calc(992px - 6.25%); }
+    width: calc(992px - .25%); }
   .col-md,
   .col-md-1,
   .col-md-2,
@@ -598,7 +598,7 @@
 
 @media only screen and (min-width: 1200px) {
   .container {
-    width: calc(1200px - 3.25%); }
+    width: calc(1200px - 1.25%); }
   .col-lg,
   .col-lg-1,
   .col-lg-2,
