@@ -43,11 +43,21 @@ jQuery(document).ready(function () {
 			flag = false;
 		}
 
-		$('.banner').css('background-position', '50% ' + -scrollVal / 2 + 'px');
+		$('.banner').css('background-position-y', -scrollVal / 2 + 'px');
+	});
+
+	$('.hamburger').on('click', function (e) {
+		$('.hamburger').toggleClass('active');
+		$('.nav').toggleClass('active');
 	});
 
 	$('.nav__link').on('click', function (e) {
 		e.preventDefault();
+
+		if ($('.nav').hasClass('active')) {
+			$('.hamburger').toggleClass('active');
+			$('.nav').toggleClass('active');
+		}
 
 		var sectionId = $(e.target).attr('href'),
 		    sectionOffset = $('' + sectionId).offset().top;

@@ -43,12 +43,22 @@ jQuery(document).ready(function () {
 			flag = false;
 		}
 
-		$('.banner').css('background-position', `50% ${-scrollVal/2}px`)		  	
+		$('.banner').css('background-position-y', `${-scrollVal/2}px`)		  	
 
+	})
+
+	$('.hamburger').on('click', e => {
+		$('.hamburger').toggleClass('active');
+		$('.nav').toggleClass('active');
 	})
 
 	$('.nav__link').on('click', e => {
 		e.preventDefault();
+
+		if ($('.nav').hasClass('active')) {
+			$('.hamburger').toggleClass('active');
+			$('.nav').toggleClass('active');
+		}
 
 		const sectionId = $(e.target).attr('href'),
 			  sectionOffset = $(`${sectionId}`).offset().top;
